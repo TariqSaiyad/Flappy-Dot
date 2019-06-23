@@ -2,9 +2,9 @@ function Bird() {
   this.y = width/2;
   this.x = 25;
 
-  this.gravity = 0.8;
+  this.gravity = 0.9;
   this.velocity = 0;
-  this.lift = -20;
+  this.lift = -25;
 
   this.show=function() {
     fill(255);
