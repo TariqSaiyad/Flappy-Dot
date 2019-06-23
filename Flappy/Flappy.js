@@ -10,22 +10,30 @@ function setup() {
 
 function draw() {
   background(0);
-  bird.update();
-  bird.show();
+
+  for (var i=pipes.length-1; i>0; i--) {
+    pipes[i].show();
+    pipes[i].update();
+    
+    //check if bird hits.
+    if(pipes[i].hits(bird)){
+     console.log("HERE");
+    }
+
+    if (pipes[i].offscreen()) {
+      pipes.splice(i, 1);
+    }
+  } 
 
 
   if (frameCount %80==0) {
     this.pipes.push(new Pipe());
   }
 
-  for (var i=pipes.length-1; i>0; i--) {
-    pipes[i].show();
-    pipes[i].update();
-    
-    if(pipes[i].offscreen()){
-     pipes.splice(i,1); 
-    }
-  }
+  bird.update();
+  bird.show();
+
+
 }
 
 function keyPressed() {
